@@ -1,4 +1,4 @@
-package DesignPatterns.CreationalPattern;
+package DesignPatterns.CreationalPattern.BuilderPattern;
 
 public class HotelEmployee {
     private KamerBuilder kamerBuilder;

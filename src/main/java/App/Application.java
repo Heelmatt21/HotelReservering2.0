@@ -3,6 +3,7 @@ package App;
 import Config.JPAConfiguration;
 import Dao.KlantenDao;
 import DesignPatterns.BehavioralPattern.ChainOfResponsibility.*;
+import DesignPatterns.CreationalPattern.BuilderPattern.*;
 import Entities.Klanten;
 
 import java.util.List;
@@ -68,7 +69,7 @@ public class Application {
         hotelEmployee.setKamerBuilder(deluxeKamer);
         hotelEmployee.constructKamer();
         Kamer kamer3 = hotelEmployee.getKamer();
-        System.out.println("\n Hier is uw kamer meneer Fury: \n- Comfort:" + kamer3.getComfort() +
+        System.out.println("\n Hier is uw kamer mevrouw Romanoff: \n- Comfort:" + kamer3.getComfort() +
                 "\n- Features: " + kamer3.getFeatures());*/
 
         //Facade
@@ -79,13 +80,13 @@ public class Application {
 
         //ChainOfResponsibility
 
-        Database database = new Database();
+        /*Database database = new Database();
         Handler handler = new ReservationExistHandler(database)
                 .setNextHandler(new ValidDateHandler(database))
                 .setNextHandler((new ReservationCheckHandler()));
         AuthenticationServices service = new AuthenticationServices(handler);
 
-        service.CheckReservation("Stark Tony", "01-03-2022");
+        service.CheckReservation("Stark Tony", "01-03-2022");*/
 
 
 

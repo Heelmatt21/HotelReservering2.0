@@ -1,9 +1,9 @@
-package DesignPatterns.CreationalPattern;
+package DesignPatterns.CreationalPattern.BuilderPattern;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class DeluxeKamer extends KamerBuilder{
+public class DeluxeKamer extends KamerBuilder {
     public void buildComfort(){
         kamer.setComfort("5 Star");
     }
