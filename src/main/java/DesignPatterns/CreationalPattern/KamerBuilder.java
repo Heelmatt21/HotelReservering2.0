@@ -1,4 +1,4 @@
-package DesignPatterns.BuilderPattern;
+package DesignPatterns.CreationalPattern;
 
 public abstract class KamerBuilder {
 

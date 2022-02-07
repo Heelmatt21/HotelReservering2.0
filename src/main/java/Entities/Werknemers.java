@@ -1,8 +1,16 @@
 package Entities;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.Collection;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Setter
+@Getter
 @Entity
 public class Werknemers {
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -2,8 +2,7 @@ package App;
 
 import Config.JPAConfiguration;
 import Dao.KlantenDao;
-import DesignPatterns.BuilderPattern.*;
-import DesignPatterns.StructuralPattern.Facade.AircoFacade;
+import DesignPatterns.BehavioralPattern.ChainOfResponsibility.*;
 import Entities.Klanten;
 
 import java.util.List;
@@ -17,16 +16,17 @@ public class Application {
         //select All
         //List<Klanten> klantenList = klantenDAO.retrieveKlantenList();
         //klantenList.stream().forEach(System.out::println);
- /*   for(klanten klanten : klantenList){
+    /*for(Klanten klanten : klantenList){
       System.out.println(klanten);
     }*/
 
         //Insert
         /*Klanten klanten = Klanten.builder().familienaam("Stark").voornaam("Tony").adres("Javaweg 3").distrikt("Wanica").land("Suriname").telefoonnummer(8578987).build();
         Klanten savedKlanten = klantenDAO.insert(klanten);
-        System.out.println(savedKlanten);*/
+        System.out.println(savedKlanten);
 
         //Update
+         */
         /*Klanten foundKlanten = klantenDAO.findByKlandId(1);  //select where
         foundKlanten.setAdres("Domineestraat 21");
         int updatedRecords = klantenDAO.updateKlanten(foundKlanten);
@@ -72,10 +72,20 @@ public class Application {
                 "\n- Features: " + kamer3.getFeatures());*/
 
         //Facade
-        AircoFacade aircoFacade = new AircoFacade();
+        /*AircoFacade aircoFacade = new AircoFacade();
 
         aircoFacade.turnOnAirco("On");
-        aircoFacade.turnOffAirco();
+        aircoFacade.turnOffAirco();*/
+
+        //ChainOfResponsibility
+
+        Database database = new Database();
+        Handler handler = new ReservationExistHandler(database)
+                .setNextHandler(new ValidDateHandler(database))
+                .setNextHandler((new ReservationCheckHandler()));
+        AuthenticationServices service = new AuthenticationServices(handler);
+
+        service.CheckReservation("Stark Tony", "01-03-2022");
 
 
 
