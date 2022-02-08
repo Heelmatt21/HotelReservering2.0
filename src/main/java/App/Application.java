@@ -4,8 +4,10 @@ import Config.JPAConfiguration;
 import Dao.KlantenDao;
 import DesignPatterns.BehavioralPattern.ChainOfResponsibility.*;
 import DesignPatterns.CreationalPattern.BuilderPattern.*;
+import DesignPatterns.StructuralPattern.AdapterPattern.*;
 import Entities.Klanten;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -88,7 +90,44 @@ public class Application {
 
         service.CheckReservation("Stark Tony", "01-03-2022");*/
 
-
-
+        //Adapter
+        List<Werknemers> werknemersList = getAllWerknemers();
+        System.out.println(werknemersList);
     }
+        private static List<Werknemers> getAllWerknemers()
+        {
+            List<Werknemers> allWerknemers = new ArrayList<>();
+            /*DatabaseWerknemers databaseWerknemers = new DatabaseWerknemers(
+                    12,
+                    "Ventura",
+                    "Ace",
+                    "Tamansarieweg 101",
+                    8755872);
+            allWerknemers.add(databaseWerknemers);*/
+
+            // creating LDAP employee
+            HotelLelydorpWerknemers hotelLelydorpWerknemers = new HotelLelydorpWerknemers(
+                    14,
+                    "Vader",
+                    "Darth",
+                    "Javaweg 344",
+                    8274599);
+            allWerknemers.add(new HotelLelydorpWerknemersAdapter(hotelLelydorpWerknemers));
+
+            // creating CSV employee
+            HotelNoordWerknemers hotelNoordWerknemers = new HotelNoordWerknemers(
+                    1,
+                    "Bond",
+                    "James",
+                    "Wilhelminastraat 7",
+                    8678784);
+            allWerknemers.add(new HotelNoordWerknemersAdapter(hotelNoordWerknemers));
+
+
+            return allWerknemers;
+
+
+
+
+        }
 }
