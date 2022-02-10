@@ -91,13 +91,13 @@ public class Application {
         service.CheckReservation("Stark Tony", "01-03-2022");*/
 
         //Adapter
-        List<Werknemers> werknemersList = getAllWerknemers();
+        /*List<Werknemers> werknemersList = getAllWerknemers();
         System.out.println(werknemersList);
     }
         private static List<Werknemers> getAllWerknemers()
         {
             List<Werknemers> allWerknemers = new ArrayList<>();
-            /*DatabaseWerknemers databaseWerknemers = new DatabaseWerknemers(
+            DatabaseWerknemers databaseWerknemers = new DatabaseWerknemers(
                     12,
                     "Ventura",
                     "Ace",
@@ -105,8 +105,8 @@ public class Application {
                     8755872);
             allWerknemers.add(databaseWerknemers);*/
 
-            // creating LDAP employee
-            HotelLelydorpWerknemers hotelLelydorpWerknemers = new HotelLelydorpWerknemers(
+            // creating HotelLelydorpWerknemers
+            /*HotelLelydorpWerknemers hotelLelydorpWerknemers = new HotelLelydorpWerknemers(
                     14,
                     "Vader",
                     "Darth",
@@ -114,7 +114,7 @@ public class Application {
                     8274599);
             allWerknemers.add(new HotelLelydorpWerknemersAdapter(hotelLelydorpWerknemers));
 
-            // creating CSV employee
+            // creating HotelNoordWerknemers
             HotelNoordWerknemers hotelNoordWerknemers = new HotelNoordWerknemers(
                     1,
                     "Bond",
@@ -124,7 +124,7 @@ public class Application {
             allWerknemers.add(new HotelNoordWerknemersAdapter(hotelNoordWerknemers));
 
 
-            return allWerknemers;
+            return allWerknemers;*/
 
 
 
