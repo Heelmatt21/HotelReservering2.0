@@ -33,6 +33,9 @@ public class Werknemers {
     @Column(name = "telefoonnummer")
     private int telefoonnummer;
     @Basic
+    @Column (name = "werknemersnummer")
+    private String werknemersnummer;
+    @Basic
     @Column(name = "locatie_id", insertable = false, updatable = false)
     private int locatieId;
     @OneToMany(mappedBy = "werknemersByWerknemerId")
@@ -87,6 +90,14 @@ public class Werknemers {
 
     public void setTelefoonnummer(int telefoonnummer) {
         this.telefoonnummer = telefoonnummer;
+    }
+
+    public String getWerknemersnummer() {
+        return werknemersnummer;
+    }
+
+    public void setWerknemersnummer(String werknemersnummer) {
+        this.werknemersnummer = werknemersnummer;
     }
 
     public int getLocatieId() {

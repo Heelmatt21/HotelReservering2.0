@@ -1,6 +1,8 @@
 package Entities;
 
 import javax.persistence.*;
+
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -33,6 +35,8 @@ public class Klanten {
     private String land;
     @Column
     private int telefoonnummer;
+    @Column
+    private String klantnummer;
     @OneToMany(mappedBy = "klanten")
     @Column
     private Set<Betalingen> betalingens;
@@ -93,6 +97,14 @@ public class Klanten {
         this.telefoonnummer = telefoonnummer;
     }
 
+    public String getKlantnummer() {
+        return klantnummer;
+    }
+
+    public void setKlantnummer(String klantnummer) {
+        this.klantnummer = klantnummer;
+    }
+
     public Set<Betalingen> getBetalingens() {
         return betalingens;
     }
@@ -108,7 +120,9 @@ public class Klanten {
                 ", voornaam='" + voornaam + '\'' +
                 ", adres='" + adres + '\'' +
                 ", distrikt=" + distrikt + '\'' +
-                ", land=" + land +
+                ", land=" + land + '\'' +
+                ", telefoonnummer=" + telefoonnummer + '\'' +
+                ", klantnummer=" + klantnummer +
                 '}';
     }
 }

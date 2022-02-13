@@ -24,21 +24,23 @@ public class Application {
     }*/
 
         //Insert
-        /*Klanten klanten = Klanten.builder().familienaam("Stark").voornaam("Tony").adres("Javaweg 3").distrikt("Wanica").land("Suriname").telefoonnummer(8578987).build();
+        /*Klanten klanten = Klanten.builder().familienaam("Tom").voornaam("Jerry").adres("Gravenstraat 5").distrikt("Paramaribo").land("Suriname").telefoonnummer(887785).klantnummer("K20020007").build();
         Klanten savedKlanten = klantenDAO.insert(klanten);
-        System.out.println(savedKlanten);
+        System.out.println(savedKlanten);*/
 
         //Update
-         */
-        /*Klanten foundKlanten = klantenDAO.findByKlandId(1);  //select where
-        foundKlanten.setAdres("Domineestraat 21");
+
+        /*Klanten foundKlanten = klantenDAO.findByKlantFamilienaam("Parker");// find by Klant Familienaam
+        Klanten foundKlanten1 = klantenDAO.findByTelefoonnummer(7244897); // find by Klant Telefoonnummer
+        foundKlanten.setAdres("Domineestraat 22");
         int updatedRecords = klantenDAO.updateKlanten(foundKlanten);
         System.out.println(updatedRecords);
-        System.out.println(foundKlanten);*/
+        System.out.println(foundKlanten);
+        System.out.println(foundKlanten1);*/
 
         //Delete
-        /*Klanten foundDeletedKlanten = klantenDAO.findByKlandId(18);
-        int totalRecordsDeleted = klantenDAO.delete(18);
+        /*Klanten foundDeletedKlanten = klantenDAO.findByKlantnummer("K20220006");
+        int totalRecordsDeleted = klantenDAO.delete("K20220006");
         System.out.println(totalRecordsDeleted);
         System.out.println(foundDeletedKlanten);
 
@@ -103,10 +105,10 @@ public class Application {
                     "Ace",
                     "Tamansarieweg 101",
                     8755872);
-            allWerknemers.add(databaseWerknemers);*/
+            allWerknemers.add(databaseWerknemers);
 
             // creating HotelLelydorpWerknemers
-            /*HotelLelydorpWerknemers hotelLelydorpWerknemers = new HotelLelydorpWerknemers(
+            HotelLelydorpWerknemers hotelLelydorpWerknemers = new HotelLelydorpWerknemers(
                     14,
                     "Vader",
                     "Darth",

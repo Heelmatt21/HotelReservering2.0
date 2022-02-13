@@ -12,6 +12,8 @@ public class Reserveringen {
     @Basic
     @Column(name = "reserveer_datum")
     private String reserveerDatum;
+    @Column(name = "reserveringsnummer")
+    private String reserveringsnummer;
     @Basic
     @Column(name = "locatie_id",insertable = false, updatable = false)
     private int locatieId;
@@ -56,6 +58,14 @@ public class Reserveringen {
 
     public void setReserveerDatum(String reserveerDatum) {
         this.reserveerDatum = reserveerDatum;
+    }
+
+    public String getReserveringsnummer() {
+        return reserveringsnummer;
+    }
+
+    public void setReserveringsnummer(String reserveringsnummer) {
+        this.reserveringsnummer = reserveringsnummer;
     }
 
     public int getLocatieId() {

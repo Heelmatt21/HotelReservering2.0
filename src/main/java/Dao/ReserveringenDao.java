@@ -23,12 +23,22 @@ public class ReserveringenDao {
         entityManager.getTransaction().commit();
         return rederveringenList;
     }
-
-    public Reserveringen findByReserveringId(Integer resrveringId) {
+    //find by reserveringId
+    /*public Reserveringen findByReserveringId(Integer resrveringId) {
         entityManager.getTransaction().begin();
         String jpql = "select c from Reserveringen c  where c.reservering_id = :reservering_id";
         TypedQuery<Reserveringen> query = entityManager.createQuery(jpql, Reserveringen.class);
         Reserveringen reserveringen = query.setParameter("reservering_id", resrveringId).getSingleResult();
+        entityManager.getTransaction().commit();
+        return reserveringen;
+    }*/
+
+    //find by reserveringsnummer
+    public Reserveringen findByReserveringsnummer(String reserveringsnummer){
+        entityManager.getTransaction().begin();
+        String jpql = "select c from Reserveringen c where c.reserveringsnummer= :reserveringsnummer";
+        TypedQuery<Reserveringen> query = entityManager.createQuery(jpql, Reserveringen.class);
+        Reserveringen reserveringen = query.setParameter("reserveringsnummer", reserveringsnummer).getSingleResult();
         entityManager.getTransaction().commit();
         return reserveringen;
     }
@@ -42,8 +52,8 @@ public class ReserveringenDao {
 
     public int updateReserveringen(Reserveringen reserveringen) {
         entityManager.getTransaction().begin();
-        Query query = entityManager.createQuery("UPDATE Reserveringen c SET c.reserveerDatum = :reserveerDatum where c.reservering_id = :reservering_id");
-        query.setParameter("reservering_id", reserveringen.getReservering_id());
+        Query query = entityManager.createQuery("UPDATE Reserveringen c SET c.reserveerDatum = :reserveerDatum where c.reserveringsnummer = :reserveringsnummer");
+        query.setParameter("reserveringsnummer", reserveringen.getReserveringsnummer());
         query.setParameter("reserveerDatum", reserveringen.getReserveerDatum());
         int rowsUpdated = query.executeUpdate();
         System.out.println("entities Updated: " + rowsUpdated);
@@ -51,10 +61,10 @@ public class ReserveringenDao {
         return rowsUpdated;
     }
 
-    public int delete(Integer reserveringId) {
+    public int delete(String reserveringsNummer) {
         entityManager.getTransaction().begin();
-        Query query = entityManager.createQuery("delete from Reserveringen c where c.reservering_id = :reservering_id");
-        query.setParameter("reservering_id", reserveringId);
+        Query query = entityManager.createQuery("delete from Reserveringen c where c.reserveringsnummer = :reserveringsnummer");
+        query.setParameter("reserveringsnummer", reserveringsNummer);
         int rowsDeleted = query.executeUpdate();
         System.out.println("entities deleted: " + rowsDeleted);
         entityManager.getTransaction().commit();

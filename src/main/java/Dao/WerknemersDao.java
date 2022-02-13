@@ -23,12 +23,21 @@ public class WerknemersDao {
         entityManager.getTransaction().commit();
         return werknemersList;
     }
-
-    public Werknemers findByWerknemerId(Integer werknemerId) {
+    //find by werknemersId
+    /*public Werknemers findByWerknemerId(Integer werknemerId) {
         entityManager.getTransaction().begin();
         String jpql = "select c from Werknemers c  where c.werknemer_id = :werknemer_id";
         TypedQuery<Werknemers> query = entityManager.createQuery(jpql, Werknemers.class);
         Werknemers werknemers = query.setParameter("werknemer_id", werknemerId).getSingleResult();
+        entityManager.getTransaction().commit();
+        return werknemers;
+    }*/
+    //find by werknemersnummer
+    public Werknemers findByWerknemersnummer(String werknemersNummer){
+        entityManager.getTransaction().begin();
+        String jpql = "select c from Werknemers c where c.werknemersnummer = :werknemersnummer";
+        TypedQuery<Werknemers> query = entityManager.createQuery(jpql, Werknemers.class);
+        Werknemers werknemers = query.setParameter("werknemersnummer", werknemersNummer).getSingleResult();
         entityManager.getTransaction().commit();
         return werknemers;
     }
@@ -42,8 +51,8 @@ public class WerknemersDao {
 
     public int updateWerknemers(Werknemers werknemers) {
         entityManager.getTransaction().begin();
-        Query query = entityManager.createQuery("UPDATE Werknemers c SET c.telefoonnummer = :telefoonnummer where c.werknemer_id = :werknemer_id");
-        query.setParameter("werknemer_id", werknemers.getWerknemer_id());
+        Query query = entityManager.createQuery("UPDATE Werknemers c SET c.telefoonnummer = :telefoonnummer where c.werknemersnummer = :werknemersnummer");
+        query.setParameter("werknemersnummer", werknemers.getWerknemersnummer());
         query.setParameter("telefoonnummer", werknemers.getTelefoonnummer());
         int rowsUpdated = query.executeUpdate();
         System.out.println("entities Updated: " + rowsUpdated);
@@ -51,10 +60,10 @@ public class WerknemersDao {
         return rowsUpdated;
     }
 
-    public int delete(Integer werknemerId) {
+    public int delete(String werknemersNummer) {
         entityManager.getTransaction().begin();
-        Query query = entityManager.createQuery("delete from Werknemers c where c.werknemer_id = :werknemer_id");
-        query.setParameter("werknemer_id", werknemerId);
+        Query query = entityManager.createQuery("delete from Werknemers c where c.werknemersnummer = :werknemersnummer");
+        query.setParameter("werknemersnummer", werknemersNummer);
         int rowsDeleted = query.executeUpdate();
         System.out.println("entities deleted: " + rowsDeleted);
         entityManager.getTransaction().commit();
