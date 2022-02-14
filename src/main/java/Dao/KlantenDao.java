@@ -40,15 +40,24 @@ public class KlantenDao {
         entityManager.getTransaction().commit();
         return klanten1;
     }
+    //find by familienaam en telefoonnummer
+    public Klanten findByFamilienaamTelefoonnummer(String familienaam, Integer telefoonnummer){
+        entityManager.getTransaction().begin();
+        String jpql2 = "select c from Klanten c where c.familienaam = :familienaam and c.telefoonnummer = :telefoonnummer";
+        TypedQuery<Klanten> query = entityManager.createQuery(jpql2, Klanten.class);
+        Klanten klanten2 = query.setParameter("familienaam", familienaam).setParameter("telefoonnummer",telefoonnummer).getSingleResult();
+        entityManager.getTransaction().commit();
+        return klanten2;
 
+    }
     //find by klantnummer
     public Klanten findByKlantnummer(String klantnummer){
         entityManager.getTransaction().begin();
-        String jpql2 = "select c from Klanten c where c.klantnummer = :klantnummer";
-        TypedQuery<Klanten>query = entityManager.createQuery(jpql2, Klanten.class);
-        Klanten klanten2 = query.setParameter("klantnummer", klantnummer).getSingleResult();
+        String jpql3 = "select c from Klanten c where c.klantnummer = :klantnummer";
+        TypedQuery<Klanten>query = entityManager.createQuery(jpql3, Klanten.class);
+        Klanten klanten3 = query.setParameter("klantnummer", klantnummer).getSingleResult();
         entityManager.getTransaction().commit();
-        return klanten2;
+        return klanten3;
     }
 
     public Klanten insert(Klanten klanten) {

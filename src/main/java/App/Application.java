@@ -28,15 +28,20 @@ public class Application {
         Klanten savedKlanten = klantenDAO.insert(klanten);
         System.out.println(savedKlanten);*/
 
-        //Update
 
-        /*Klanten foundKlanten = klantenDAO.findByKlantFamilienaam("Parker");// find by Klant Familienaam
-        Klanten foundKlanten1 = klantenDAO.findByTelefoonnummer(7244897); // find by Klant Telefoonnummer
-        foundKlanten.setAdres("Domineestraat 22");
+        //Update find by familienaam en telefoonnummer
+        /*Klanten foundKlanten = klantenDAO.findByFamilienaamTelefoonnummer("Parker", 7244897);
+        foundKlanten.setAdres("Domineestraat 24");
         int updatedRecords = klantenDAO.updateKlanten(foundKlanten);
         System.out.println(updatedRecords);
-        System.out.println(foundKlanten);
-        System.out.println(foundKlanten1);*/
+        System.out.println(foundKlanten);*/
+
+        //Update find by klantnummer
+        /*Klanten foundklanten = klantenDAO.findByKlantnummer("K20220001");
+        foundklanten.setAdres("Domineestraat 25");
+        int updatedRedcords = klantenDAO.updateKlanten(foundklanten);
+        System.out.println(updatedRedcords);
+        System.out.println(foundklanten);*/
 
         //Delete
         /*Klanten foundDeletedKlanten = klantenDAO.findByKlantnummer("K20220006");
