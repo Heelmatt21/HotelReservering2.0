@@ -23,7 +23,7 @@ public class Reserveringen {
     @Basic
     @Column(name = "werknemer_id", insertable = false, updatable = false)
     private int werknemerId;
-    @OneToMany(mappedBy = "reserveringenByReserveringId")
+    @OneToMany(mappedBy = "reserveringenByReserveringId", cascade = CascadeType.REMOVE)
     private Collection<Betalingen> betalingensByReserveringId;
     @ManyToOne
     @JoinColumn(name = "locatie_id", referencedColumnName = "locatie_id", nullable = false)
@@ -31,7 +31,6 @@ public class Reserveringen {
     @ManyToOne
     @JoinColumn(name = "klant_id", referencedColumnName = "klant_id", nullable = false)
     private Klanten klantenByKlantId;
-
     @ManyToOne
     @JoinColumn(name = "werknemer_id", referencedColumnName = "werknemer_id", nullable = false)
     private Werknemers werknemersByWerknemerId;

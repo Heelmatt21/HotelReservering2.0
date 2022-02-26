@@ -5,7 +5,9 @@ import Entities.Klanten;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.swing.*;
 import java.util.List;
+import java.util.Locale;
 
 public class KlantenDao {
     private EntityManager entityManager;
@@ -52,15 +54,18 @@ public class KlantenDao {
     }
     //find by klantnummer
     public Klanten findByKlantnummer(String klantnummer){
-        entityManager.getTransaction().begin();
-        String jpql3 = "select c from Klanten c where c.klantnummer = :klantnummer";
-        TypedQuery<Klanten>query = entityManager.createQuery(jpql3, Klanten.class);
-        Klanten klanten3 = query.setParameter("klantnummer", klantnummer).getSingleResult();
-        entityManager.getTransaction().commit();
-        return klanten3;
+        if (klantnummer != null){
+            System.out.println("Klant bestaat niet");}
+            entityManager.getTransaction().begin();
+            String jpql3 = "select c from Klanten c where c.klantnummer = :klantnummer";
+            TypedQuery<Klanten> query = entityManager.createQuery(jpql3, Klanten.class);
+            Klanten klanten3 = query.setParameter("klantnummer", klantnummer.toLowerCase()).getSingleResult();
+            entityManager.getTransaction().commit();
+            return klanten3;
     }
 
     public Klanten insert(Klanten klanten) {
+        klanten.setKlantnummer(klanten.getKlantnummer().toLowerCase());
         entityManager.getTransaction().begin();
         entityManager.persist(klanten);
         entityManager.getTransaction().commit();

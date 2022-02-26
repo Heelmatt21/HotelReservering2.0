@@ -37,7 +37,8 @@ public class Klanten {
     private int telefoonnummer;
     @Column
     private String klantnummer;
-    @OneToMany(mappedBy = "klanten")
+    @OneToMany(mappedBy = "klanten",cascade = CascadeType.REMOVE)
+    //@OneToMany(cascade = CascadeType.PERSIST)
     @Column
     private Set<Betalingen> betalingens;
 

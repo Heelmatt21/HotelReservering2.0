@@ -31,7 +31,7 @@ public class Application {
 
         //Update find by familienaam en telefoonnummer
         /*Klanten foundKlanten = klantenDAO.findByFamilienaamTelefoonnummer("Parker", 7244897);
-        foundKlanten.setAdres("Domineestraat 24");
+        foundKlanten.setAdres("Domineestraat 31");
         int updatedRecords = klantenDAO.updateKlanten(foundKlanten);
         System.out.println(updatedRecords);
         System.out.println(foundKlanten);*/
@@ -43,13 +43,14 @@ public class Application {
         System.out.println(updatedRedcords);
         System.out.println(foundklanten);*/
 
-        //Delete
-        /*Klanten foundDeletedKlanten = klantenDAO.findByKlantnummer("K20220006");
-        int totalRecordsDeleted = klantenDAO.delete("K20220006");
+        //Delete find by klantnummer
+        /*Klanten foundDeletedKlanten = klantenDAO.findByKlantnummer("k20220008");
+        int totalRecordsDeleted = klantenDAO.delete("k20220008");
         System.out.println(totalRecordsDeleted);
         System.out.println(foundDeletedKlanten);
 
         JPAConfiguration.shutdown();*/
+
 
         //Builder
         /*HotelEmployee hotelEmployee = new HotelEmployee();
