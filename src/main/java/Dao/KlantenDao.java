@@ -24,6 +24,7 @@ public class KlantenDao {
         entityManager.getTransaction().commit();
         return klantenList;
     }
+
     //find by familienaam
     public Klanten findByKlantFamilienaam(String familienaam) {
         entityManager.getTransaction().begin();
@@ -33,6 +34,7 @@ public class KlantenDao {
         entityManager.getTransaction().commit();
         return klanten;
     }
+
     //find by telefoonnummer
     public Klanten findByTelefoonnummer(Integer telefoonnummer) {
         entityManager.getTransaction().begin();
@@ -42,27 +44,32 @@ public class KlantenDao {
         entityManager.getTransaction().commit();
         return klanten1;
     }
+
     //find by familienaam en telefoonnummer
-    public Klanten findByFamilienaamTelefoonnummer(String familienaam, Integer telefoonnummer){
+    public Klanten findByFamilienaamTelefoonnummer(String familienaam, Integer telefoonnummer) {
         entityManager.getTransaction().begin();
         String jpql2 = "select c from Klanten c where c.familienaam = :familienaam and c.telefoonnummer = :telefoonnummer";
         TypedQuery<Klanten> query = entityManager.createQuery(jpql2, Klanten.class);
-        Klanten klanten2 = query.setParameter("familienaam", familienaam).setParameter("telefoonnummer",telefoonnummer).getSingleResult();
+        Klanten klanten2 = query.setParameter("familienaam", familienaam).setParameter("telefoonnummer", telefoonnummer).getSingleResult();
         entityManager.getTransaction().commit();
         return klanten2;
 
     }
+
     //find by klantnummer
-    public Klanten findByKlantnummer(String klantnummer){
-        if (klantnummer != null){
-            System.out.println("Klant bestaat niet");}
+    public Klanten findByKlantnummer(String klantnummer) {
+        if (klantnummer == null){
+            System.out.println("Klantnummer bestaat niet!");
+
             entityManager.getTransaction().begin();
             String jpql3 = "select c from Klanten c where c.klantnummer = :klantnummer";
             TypedQuery<Klanten> query = entityManager.createQuery(jpql3, Klanten.class);
             Klanten klanten3 = query.setParameter("klantnummer", klantnummer.toLowerCase()).getSingleResult();
             entityManager.getTransaction().commit();
             return klanten3;
-    }
+
+        }return null;
+}
 
     public Klanten insert(Klanten klanten) {
         klanten.setKlantnummer(klanten.getKlantnummer().toLowerCase());
@@ -85,13 +92,13 @@ public class KlantenDao {
     }
 
     public int delete(String klantnummer) {
-        entityManager.getTransaction().begin();
-        Query query = entityManager.createQuery("delete from Klanten c where c.klantnummer = :klantnummer");
-        query.setParameter("klantnummer", klantnummer);
-        int rowsDeleted = query.executeUpdate();
-        System.out.println("entities deleted: " + rowsDeleted);
-        entityManager.getTransaction().commit();
-        return rowsDeleted;
-    }
+            entityManager.getTransaction().begin();
+            Query query = entityManager.createQuery("delete from Klanten c where c.klantnummer = :klantnummer");
+            query.setParameter("klantnummer", klantnummer.toLowerCase());
+            int rowsDeleted = query.executeUpdate();
+            System.out.println("entities deleted: " + rowsDeleted);
+            entityManager.getTransaction().commit();
+            return rowsDeleted;
+        }
 
 }

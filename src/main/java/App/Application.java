@@ -9,9 +9,12 @@ import Entities.Klanten;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
+        //scanner test
+        Scanner YesNo =new Scanner(System.in);
 
         JPAConfiguration.getEntityManager();
         KlantenDao klantenDAO = new KlantenDao(JPAConfiguration.getEntityManager());
@@ -44,12 +47,22 @@ public class Application {
         System.out.println(foundklanten);*/
 
         //Delete find by klantnummer
-        /*Klanten foundDeletedKlanten = klantenDAO.findByKlantnummer("k20220008");
-        int totalRecordsDeleted = klantenDAO.delete("k20220008");
-        System.out.println(totalRecordsDeleted);
-        System.out.println(foundDeletedKlanten);
+        //scanner
+        System.out.println("Bent u zeker dat u alle klant data wilt verwijderen?");
+        String yesno = YesNo.next();
 
-        JPAConfiguration.shutdown();*/
+        if (yesno.equals("ja")){
+            Klanten foundDeletedKlanten = klantenDAO.findByKlantnummer("k20220015");
+            int totalRecordsDeleted = klantenDAO.delete("k20220015");
+            System.out.println(totalRecordsDeleted);
+            System.out.println(foundDeletedKlanten);
+
+
+        }else if (yesno.equals("nee")){
+            System.out.println("Verwijderings process gestopt");
+        }
+        JPAConfiguration.shutdown();
+
 
 
         //Builder
