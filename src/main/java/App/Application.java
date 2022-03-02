@@ -47,13 +47,12 @@ public class Application {
         System.out.println(foundklanten);*/
 
         //Delete find by klantnummer
-        //scanner
         System.out.println("Bent u zeker dat u alle klant data wilt verwijderen?");
         String yesno = YesNo.next();
 
         if (yesno.equals("ja")){
-            Klanten foundDeletedKlanten = klantenDAO.findByKlantnummer("k20220015");
-            int totalRecordsDeleted = klantenDAO.delete("k20220015");
+            Klanten foundDeletedKlanten = klantenDAO.findByKlantnummer("k20220016");
+            int totalRecordsDeleted = klantenDAO.delete("k20220016");
             System.out.println(totalRecordsDeleted);
             System.out.println(foundDeletedKlanten);
 

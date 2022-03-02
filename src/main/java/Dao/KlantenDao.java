@@ -58,7 +58,7 @@ public class KlantenDao {
 
     //find by klantnummer
     public Klanten findByKlantnummer(String klantnummer) {
-        if (klantnummer == null){
+        if (klantnummer == null) {
             System.out.println("Klantnummer bestaat niet!");
 
             entityManager.getTransaction().begin();
@@ -69,7 +69,7 @@ public class KlantenDao {
             return klanten3;
 
         }return null;
-}
+    }
 
     public Klanten insert(Klanten klanten) {
         klanten.setKlantnummer(klanten.getKlantnummer().toLowerCase());
